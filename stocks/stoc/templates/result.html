@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TechSpark</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    {% load static %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato&family=Sometype+Mono&display=swap');
+        * {
+            font-family: 'Lato', sans-serif;
+        }
+
+        body {
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                              url("{% static '/pexels-anna-nekrashevich-6801648.jpg' %}");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .main {
+            position: relative;
+            top: 160px;
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                             url("{% static '/7TrU.gif' %}");
+            background-position: center;
+            background-size: cover;
+            color: white;
+            width: 40%;
+            border-radius: 10px;
+        }
+
+        .head {
+            padding-top: 10px;
+        }
+
+        option {
+            color: whitesmoke;
+            background-color: rgb(32, 32, 32);
+        }
+
+        .prediction-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            position: relative;
+            top: -15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="main container">
+    <div class="container my-5">
+        <h2 class="text-center head my-3">SENTIX</h2>
+        <div class="prediction-container">
+            <h4>The New Opening Price For {{stock}}<br></h4>
+            <p><span>₹ </span>{{ ans }}</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    // Define the JSON array of stock names
+    const stockNames = [
+        "BAJFINANCE", "BHARTIARTL", "BPCL.NS", "BRITANNIA",
+        "CIPLA.BO", "COALINDIA", "DIVISLAB", "DRREDDY",
+        "EICHERMOT", "GRASIM", "HCLTECH", "HDFCBANK",
+        "HDFCLIFE", "HEROMOTOCO", "HINDALCO", "HINDUNILVR",
+        "ICICIBANK", "INDUSINDBK", "INFY", "ITC", "JIOFIN",
+        "JSWSTEEL", "KOTAKBANK", "LT", "LTIM", "M&M",
+        "MARUTI", "NESTLEIND", "NTPC", "ONGC", "POWERGRID",
+        "RELIANCE", "SBILIFE", "SBIN", "SUNPHARMA",
+        "TATACONSUM", "TATAMOTORS", "TATASTEEL", "TCS",
+        "TECHM", "TITAN", "ULTRACEMCO", "UPL", "WIPRO",
+        "ADANIENT", "ADANIPORTS", "APOLLOHOSP", "ASIANPAINT",
+        "AXISBANK", "BAJAJ-AUTO"
+    ];
+
+    // Get the select element
+    const stockSelect = document.getElementById("stockSelect");
+
+    // Populate the select
+    // Populate the select element with options from the JSON array
+    stockNames.forEach((stockName) => {
+      const option = document.createElement("option");
+      option.text = stockName;
+      stockSelect.add(option);
+  });
+
+  // Add an event listener to the select element to handle the stock selection
+  stockSelect.addEventListener("change", function () {
+      const selectedStock = stockSelect.value;
+      // You can perform any actions or make an API call for prediction based on the selected stock here.
+      // For now, let's update the displayed prediction result.
+
+      const predictionResult = document.querySelector('.prediction-container p');
+      predictionResult.textContent = "Selected Stock: " + selectedStock;
+  });
+</script>
+</body>
+</html>
