@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SENTIX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  {%load static%}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato&family=Sometype+Mono&display=swap');
+.main{    
+    background-image:linear-gradient(0deg, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url("{% static "/pexels-anna-nekrashevich-6801648.jpg" %}") ;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+} 
+.container{
+    
+    position: relative;
+    top: 100px;
+    border: 2px solid black;
+    border-radius: 8px;
+    height: 650px;
+    width: 400px;
+font-family: 'Lato', sans-serif;
+    background-color: whitesmoke;
+
+}
+
+.lo{
+    position: relative;
+    top: -25px;
+}
+
+.container img{
+    height: 170px;
+    width: 170px;
+}
+.input-container {
+    position: relative;
+font-family: 'Sometype Mono', monospace;
+    margin: 20px;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+label {
+    position: absolute;
+    top: 12px;
+    left: 10px;
+    transition: 0.2s;
+    pointer-events: none;
+}
+input:focus + label, input:valid + label {
+    top: -12px;
+    font-size: 12px;
+    background: white;
+    padding: 0 5px;
+}
+a {
+    color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+    text-decoration: none;
+}
+.sub{
+    width: 225px;
+}
+.sub a:hover {
+    color: white;
+}
+.fot{
+    font-size: 12px;
+}
+.fot a{
+    text-decoration: none;
+}
+  </style>
+  <body>
+<div class="main">
+    <div class="container">
+      <div class="text-center">
+        <img src="{% static "/logo.png" %}" alt="">
+      </div>
+      <div class="lo">
+        <h3 class="text-center">WELCOME</h3>
+        <h6 class="text-center">Register to sentix to continue to Stock</h6> 
+        <h6 class="text-center">Prediction</h6> 
+        <form action="/handleRegister" method="post">{% csrf_token %}
+            <div class="input-container">
+                <input type="text" name="fname" id="inputField" required>
+                <label for="inputField">First Name</label>
+            </div>
+            <div class="input-container">
+                <input type="text" name="lname" id="inputField" required>
+                <label for="inputField">Last Name</label>
+            </div>
+            <div class="input-container">
+                <input type="Email" name="mail" id="inputField" required>
+                <label for="inputField">Email address</label>
+            </div>
+            <div class="input-container">
+                <input type="Password" name="passs" id="inputField" required>
+                <label for="inputField">Password</label>
+            </div>
+            <div class="text-center"><button type="submit" class="btn btn-outline-primary sub su mx-4">Submit</button></div>
+          </form>
+          <footer class="text-center fot my-3"><a href="index.html">Login</a></footer>
+      </div>
+    </div>
+</div>
+  </body>
+</html>
